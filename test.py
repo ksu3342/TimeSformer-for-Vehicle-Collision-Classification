@@ -7,7 +7,7 @@ from train import VideoDataset, VideoTransformer # 导入定义的Dataset和模�
 
 # 构建模型
 model = VideoTransformer(embed_dim=256, num_heads=8, num_layers=3, num_classes=2)
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:4" if torch.cuda.is_available() else "cpu")
 model = model.to(device) 
 
 # 加载预训练模型参数  
@@ -18,7 +18,7 @@ model.eval()
 
 # 构建测试集
 test_dataset = VideoDataset('/home/sunyvbo/TEXT') 
-test_loader = DataLoader(test_dataset, batch_size=4)
+test_loader = DataLoader(test_dataset, batch_size=16)
 
 # 预测统计
 correct = 0  
